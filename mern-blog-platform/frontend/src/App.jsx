@@ -6,9 +6,18 @@ import CreateBlog from '../src/pages/Createblog.jsx';
 import Login from '../src/components/Login.jsx';
 import Signup from '../src/components/Signup.jsx';
 import Dashboard from '../src/pages/Dashboard.jsx';
+import * as Sentry from "@sentry/react";
+import { BrowserTracing } from "@sentry/tracing";
+
+Sentry.init({
+  dsn: "https://your_sentry_dsn_here",
+  integrations: [new BrowserTracing()],
+  tracesSampleRate: 1.0,
+});
 
 function App() {
   return (
+ <Sentry.ErrorBoundary fallback={<p>An error has occurred.</p>}>
     <div className="container mx-auto p-4">
     
       <Routes>
@@ -21,6 +30,7 @@ function App() {
       </Routes>
     
     </div>
+  </Sentry.ErrorBoundary>
   );
 }
 export default App;
