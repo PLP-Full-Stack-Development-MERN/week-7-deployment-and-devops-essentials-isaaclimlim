@@ -11,6 +11,8 @@
     "test": "jest --watch"
   },
   "dependencies": {
+    "@sentry/react": "^9.8.0",
+    "@sentry/tracing": "^7.120.3",
     "@tailwindcss/vite": "^4.0.15",
     "axios": "^1.8.4",
     "react": "^19.0.0",
